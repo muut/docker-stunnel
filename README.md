@@ -1,5 +1,4 @@
 #docker-stunnel
-==============
 
 ##Setup
 
