@@ -5,7 +5,7 @@
  - replace stunnel.pem (this is a self signed temporary cert for localhost)
  - update stunnel.conf
  - build container
-
+ - You must run the container via: `echo "stunnel /etc/stunnel/stunnel.conf" | docker run-i -t moot/stunnel /bin/bash` to avoid the problem below
 
 ##Problems
 
