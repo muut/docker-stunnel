@@ -14,6 +14,10 @@ This works:
  ```
  docker run -i -t moot/stunnel /bin/bash  
  stunnel /etc/stunnel/stunnel.conf
+
+ OR
+
+ echo "stunnel /etc/stunnel/stunnel.conf" | docker run-i -t moot/stunnel /bin/bash
  ```
 
 Either of these however:
