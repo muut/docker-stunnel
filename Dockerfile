@@ -18,21 +18,15 @@ ENV STUNNEL_VERSION 4.56
 
 RUN wget -O - ftp://ftp.stunnel.org/stunnel/archive/4.x/stunnel-$STUNNEL_VERSION.tar.gz | tar -C /usr/local/src -zxv
 
-ADD . /usr/local/src/stunnel-$STUNNEL_VERSION
+RUN mkdir -p /stunnel
+VOLUME ["/stunnel"]
 
-RUN mkdir -p /usr/local/etc/stunnel
-RUN mkdir -p /etc/stunnel
-RUN mkdir -p /var/lib/stunnel
-
-RUN cp /usr/local/src/stunnel-$STUNNEL_VERSION/stunnel.pem /usr/local/etc/stunnel/stunnel.pem
-RUN cp /usr/local/src/stunnel-$STUNNEL_VERSION/stunnel.conf /etc/stunnel/stunnel.conf
+ADD stunnel.conf /stunnel/stunnel.conf
+ADD stunnel.pem /stunnel/stunnel.pem
 
 # Build stunnel
 RUN cd /usr/local/src/stunnel-$STUNNEL_VERSION && ./configure && make && make install
 
-RUN mkdir -p /stunnel
-VOLUME ["/stunnel"]
-
 EXPOSE 443
 
-CMD ["/usr/local/bin/stunnel", "/etc/stunnel/stunnel.conf"]
+CMD ["/usr/local/bin/stunnel", "/stunnel/stunnel.conf"]
