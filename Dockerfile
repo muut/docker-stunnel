@@ -14,9 +14,9 @@ RUN apt-get upgrade -y
 RUN apt-get -y install build-essential wget
 RUN apt-get -y install openssl libssl-dev
 
-ENV STUNNEL_VERSION 4.56
+ENV STUNNEL_VERSION 5.35
 
-RUN wget -O - ftp://ftp.stunnel.org/stunnel/archive/4.x/stunnel-$STUNNEL_VERSION.tar.gz | tar -C /usr/local/src -zxv
+RUN wget -O - ftp://ftp.stunnel.org/stunnel/archive/5.x/stunnel-$STUNNEL_VERSION.tar.gz | tar -C /usr/local/src -zxv
 
 RUN mkdir -p /stunnel
 VOLUME ["/stunnel"]
